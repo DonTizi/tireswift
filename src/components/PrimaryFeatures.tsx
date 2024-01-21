@@ -23,13 +23,13 @@ const features = [
     title: 'Claim expenses',
     description:
     "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
-    image: screenshotExpenses,
+    image: screenshotPayroll,
   },
   {
     title: 'Reporting',
     description:
       "Track your real-time earnings and potential losses.",
-    image: screenshotVatReturns,
+    image: screenshotPayroll,
   },
 
 ]

@@ -8,11 +8,11 @@ import { ClerkProvider } from '@clerk/nextjs'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - TaxPal',
-    default: 'TaxPal - Accounting made simple for small businesses',
+    template: '%s - TireSwift',
+    default: 'TireSwift - Optimize your schedule and your income in real time.',
   },
   description:
-    'Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.',
+  "Maintain a real-time schedule to be sure to be available and optimal for your customers, prioritizing being able to make as many places and services available as possible.",
 }
 
 const inter = Inter({
