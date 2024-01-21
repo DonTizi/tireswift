@@ -30,7 +30,7 @@ function classNames(...classes) {
 export default function navbar() {
   return (
     <>
-      {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
+      {}
       <Popover
         as="header"
         className={({ open }) =>
@@ -63,7 +63,7 @@ export default function navbar() {
                   </div>
                 </div>
                 <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
-                  {/* Mobile menu button */}
+                  {}
                   <Popover.Button className="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open menu</span>
@@ -76,7 +76,7 @@ export default function navbar() {
                 </div>
                 <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
 
-                  {/* Profile dropdown */}
+                  {}
                   <div><UserButton/></div>
                 </div>
               </div>
