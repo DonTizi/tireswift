@@ -3,13 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import '@/app/admin/page.css'
+
 // Define the interface for a transaction
 interface Transaction {
   start_date: string;
   end_date: string;
   vehicle_type: string;
+  station: string; // Added station property
 }
-
 
 // Helper function to join CSS classes
 function classNames(...classes: (string | boolean)[]) {
@@ -121,35 +122,33 @@ export default function Example() {
           </div>
         </div>
         <section>
-  {selectedDate && (
-    <div>
-      <h2 className="text-base font-semibold leading-6 text-gray-900">
-        Schedule for {selectedDate}
-      </h2>
-      {transactions.length > 0 ? (
-        <div className="transactions-container">
-          {transactions.map((transaction, index) => (
-            <div key={index} className="transaction-card group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100">
-              <div className="flex-auto">
-                <p className="text-gray-900"><strong>Type of car:</strong> {transaction.vehicle_class}</p>
-                <p className="mt-0.5">
-                  <time dateTime={transaction.start_date}>{transaction.start_time}</time> -{' '}
-                  <time dateTime={transaction.end_date}>{transaction.end_time}</time>
-                </p>
-              </div>
-              <button className="open-options">Open options</button>
+          {selectedDate && (
+            <div>
+              <h2 className="text-base font-semibold leading-6 text-gray-900">
+                Schedule for {selectedDate}
+              </h2>
+              {transactions.length > 0 ? (
+                <div className="transactions-container">
+                  {transactions.map((transaction, index) => (
+                    <div key={index} className="transaction-card group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100">
+                      <div className="flex-auto">
+                        <p className="text-gray-900"><strong>Type of car:</strong> {transaction.vehicle_type}</p>
+                        <p className="text-gray-900"><strong>Station:</strong> {transaction.station}</p> {/* Display Station */}
+                        <p className="mt-0.5">
+                          <time dateTime={transaction.start_date}>{transaction.start_time}</time> -{' '}
+                          <time dateTime={transaction.end_date}>{transaction.end_time}</time>
+                        </p>
+                      </div>
+                      <button className="open-options">Open options</button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>Aucune transaction trouvée pour cette date.</p>
+              )}
             </div>
-          ))}
-        </div>
-      ) : (
-        <p>Aucune transaction trouvée pour cette date.</p>
-      )}
-    </div>
-  )}
-</section>
-
-
-
+          )}
+        </section>
       </div>
     </>
   );

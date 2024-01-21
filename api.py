@@ -6,8 +6,8 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 CORS(app)
 
-CSV_FILE_PATH = '/Users/dontizi/Downloads/tailwindui-salient/salient-ts/sample.csv'
-COLUMN_HEADERS = ['start_time', 'end_time', 'vehicle_class']
+CSV_FILE_PATH = '/Users/dontizi/Downloads/tailwindui-salient/salient-ts/sorted.csv'
+COLUMN_HEADERS = ['start_time', 'end_time', 'vehicle_class', 'station']
 
 # Define service time and price for each vehicle type
 SERVICE_INFO = {
@@ -42,14 +42,18 @@ def book_slot(vehicle_class, start_time, end_time):
 def schedule_service():
     data = request.json
     vehicle_class = data['vehicle_class']
-    requested_time = datetime.strptime(data['requested_time'], '%Y-%m-%d %H:%M')
+    start_time_str = data['start_time']
+    end_time_str = data['end_time']
+    
+    requested_start_time = datetime.strptime(start_time_str, '%Y-%m-%d %H:%M:%S')
+    requested_end_time = datetime.strptime(end_time_str, '%Y-%m-%d %H:%M:%S')
 
     service_duration = timedelta(minutes=SERVICE_INFO[vehicle_class]['time'])
-    end_time = requested_time + service_duration
+    end_time = requested_start_time + service_duration
 
-    if is_slot_available(vehicle_class, requested_time, end_time):
-        book_slot(vehicle_class, requested_time, end_time)
-        return jsonify({"message": "Service scheduled", "start_time": requested_time, "end_time": end_time}), 200
+    if is_slot_available(vehicle_class, requested_start_time, end_time):
+        book_slot(vehicle_class, requested_start_time, end_time)
+        return jsonify({"message": "Service scheduled", "start_time": requested_start_time, "end_time": end_time}), 200
     else:
         return jsonify({"message": "No available slot"}), 409
 
