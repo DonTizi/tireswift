@@ -1,10 +1,8 @@
-// Import necessary libraries and components
 'use client'
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import '@/app/admin/page.css'
 
-// Define the interface for a transaction
 interface Transaction {
   start_date: string;
   end_date: string;
@@ -133,10 +131,10 @@ export default function Example() {
                     <div key={index} className="transaction-card group flex items-center space-x-4 rounded-xl px-4 py-2 focus-within:bg-gray-100 hover:bg-gray-100">
                       <div className="flex-auto">
                         <p className="text-gray-900"><strong>Type of car:</strong> {transaction.vehicle_type}</p>
-                        <p className="text-gray-900"><strong>Station:</strong> {transaction.station}</p> {/* Display Station */}
+                        <p className="text-gray-900"><strong>Station:</strong> {transaction.station}</p> 
                         <p className="mt-0.5">
-                          <time dateTime={transaction.start_date}>{transaction.start_time}</time> -{' '}
-                          <time dateTime={transaction.end_date}>{transaction.end_time}</time>
+                          <time dateTime={transaction.start_date}>{transaction.start_date}</time> -{' '}
+                          <time dateTime={transaction.end_date}>{transaction.end_date}</time>
                         </p>
                       </div>
                       <button className="open-options">Open options</button>
