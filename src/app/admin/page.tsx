@@ -25,9 +25,9 @@ function createDaysForMonth(year: number, month: number, daysInMonth: number) {
 
 // Month names
 const monthNames: { [key: string]: string } = {
-  '10': 'Octobre',
-  '11': 'Novembre',
-  '12': 'Décembre',
+  '10': 'October',
+  '11': 'November',
+  '12': 'December',
 };
 
 export default function Example() {
@@ -94,13 +94,13 @@ export default function Example() {
             </select>
           </div>
           <div className="mt-10 grid grid-cols-7 text-center text-xs leading-6 text-gray-500">
-            <div>Dim</div>
-            <div>Lun</div>
-            <div>Mar</div>
-            <div>Mer</div>
-            <div>Jeu</div>
-            <div>Ven</div>
-            <div>Sam</div>
+            <div>S</div>
+            <div>M</div>
+            <div>T</div>
+            <div>W</div>
+            <div>T</div>
+            <div>F</div>
+            <div>S</div>
           </div>
           <div className="mt-2 grid grid-cols-7 text-sm">
             {months[currentMonth].map((day, dayIdx) => (
@@ -142,7 +142,7 @@ export default function Example() {
                   ))}
                 </div>
               ) : (
-                <p>Aucune transaction trouvée pour cette date.</p>
+                <p>No transaction found.</p>
               )}
             </div>
           )}
